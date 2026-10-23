@@ -23,6 +23,8 @@ export async function storePhoto(
   input: Buffer,
   widths: readonly number[] = PHOTO_WIDTHS,
   quality = 78,
+  /** Clave fija (solo para el seed pre-generado); por defecto es `<folder>/<uuid>`. */
+  fixedKey?: string,
 ): Promise<StoredImage> {
   let meta: Metadata;
   try {
@@ -34,7 +36,7 @@ export async function storePhoto(
     throw new InvalidImageError("Formato no soportado (usar JPG, PNG, WebP o AVIF)");
   }
 
-  const storageKey = `${folder}/${randomUUID()}`;
+  const storageKey = fixedKey ?? `${folder}/${randomUUID()}`;
   const written: string[] = [];
   let largest = { width: 0, height: 0 };
   try {

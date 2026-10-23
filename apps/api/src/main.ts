@@ -7,6 +7,10 @@ import { AppModule } from "./app.module.js";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  // Detrás de un proxy (Next/Railway/Render) la IP real viene en X-Forwarded-For. TRUST_PROXY=<saltos|true>
+  // hace que el rate limiting cuente por visitante y no por la IP del proxy. Sin definir: no se confía en nadie.
+  const trust = process.env.TRUST_PROXY;
+  if (trust) app.set("trust proxy", trust === "true" ? true : Number.isNaN(Number(trust)) ? trust : Number(trust));
   // Las imágenes se sirven a otro origen (web), por eso CORP cross-origin.
   app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
   app.use(cookieParser());

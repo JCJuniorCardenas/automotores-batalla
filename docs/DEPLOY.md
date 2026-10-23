@@ -1,5 +1,7 @@
 # Guía de deploy en Railway
 
+> Para una demo gratis con link fijo (sin Railway) ver [DEPLOY-RENDER.md](DEPLOY-RENDER.md).
+>
 > Estado: **preparada, no ejecutada**. Railway estaba caído cuando se escribió. Las imágenes Docker de API y web se probaron localmente (ver §8). Lo marcado con ⚠️ **VERIFICAR** depende de la interfaz de Railway y no se pudo confirmar: revisarlo contra su documentación al hacerlo.
 
 ## 1. Arquitectura en Railway

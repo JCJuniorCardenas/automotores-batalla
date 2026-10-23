@@ -22,7 +22,9 @@
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
     "dev": "nest start --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx prisma/seed.ts",
+    "seed:fetch-photos": "node scripts/fetch-seed-photos.mjs",
+    "seed:prepare-media": "tsx prisma/prepare-seed-media.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1155.0",
