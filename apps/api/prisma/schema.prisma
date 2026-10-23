@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+enum CarCondition {
+  ZERO_KM
+  USED
+}
+enum CarStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+}
+enum Currency {
+  ARS
+  USD
+}
+enum Fuel {
+  NAFTA
+  DIESEL
+  GNC
+  HIBRIDO
+  ELECTRICO
+}
+enum Transmission {
+  MANUAL
+  AUTOMATICA
+}
+enum SpinStatus {
+  DRAFT
+  READY
+}
+enum InquirySource {
+  FORM
+  WHATSAPP
+}
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(EDITOR)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model Car {
+  id            String       @id @default(cuid())
+  slug          String       @unique
+  brand         String
+  model         String
+  version       String?
+  year          Int
+  condition     CarCondition
+  priceAmount   Decimal      @db.Decimal(14, 2)
+  priceCurrency Currency     @default(USD)
+  mileageKm     Int?
+  fuel          Fuel
+  transmission  Transmission
+  bodyType      String?
+  color         String?
+  doors         Int?
+  engine        String?
+  description   String       @default("")
+  status        CarStatus    @default(AVAILABLE)
+  featured      Boolean      @default(false)
+  onOffer       Boolean      @default(false)
+  offerPrice    Decimal?     @db.Decimal(14, 2)
+  publishedAt   DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  photos    CarPhoto[]
+  spin      SpinSequence?
+  inquiries Inquiry[]
+
+  @@index([status, condition])
+  @@index([brand])
+  @@index([year])
+  @@index([priceAmount])
+}
+
+model CarPhoto {
+  id         String  @id @default(cuid())
+  carId      String
+  car        Car     @relation(fields: [carId], references: [id], onDelete: Cascade)
+  storageKey String
+  width      Int
+  height     Int
+  position   Int
+  alt        String  @default("")
+  isCover    Boolean @default(false)
+
+  @@index([carId, position])
+}
+
+model SpinSequence {
+  id         String      @id @default(cuid())
+  carId      String      @unique
+  car        Car         @relation(fields: [carId], references: [id], onDelete: Cascade)
+  frameCount Int         @default(0)
+  status     SpinStatus  @default(DRAFT)
+  createdAt  DateTime    @default(now())
+  frames     SpinFrame[]
+}
+
+model SpinFrame {
+  id         String       @id @default(cuid())
+  sequenceId String
+  sequence   SpinSequence @relation(fields: [sequenceId], references: [id], onDelete: Cascade)
+  position   Int
+  storageKey String
+  width      Int
+  height     Int
+
+  @@unique([sequenceId, position])
+}
+
+model Inquiry {
+  id        String        @id @default(cuid())
+  carId     String?
+  car       Car?          @relation(fields: [carId], references: [id], onDelete: SetNull)
+  name      String
+  phone     String
+  email     String?
+  message   String
+  source    InquirySource @default(FORM)
+  status    InquiryStatus @default(NEW)
+  readAt    DateTime?
+  createdAt DateTime      @default(now())
+
+  @@index([status, createdAt])
+}
+
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt
+}

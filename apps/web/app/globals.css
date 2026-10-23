@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-accent: var(--accent);
+  --color-gold: var(--color-brand-gold);
+  --color-sky: var(--color-brand-sky);
+  --radius-card: var(--radius-md);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+body {
+  background: var(--surface);
+  color: var(--text);
+}

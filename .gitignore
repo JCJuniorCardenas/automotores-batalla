@@ -1,0 +1,11 @@
+node_modules
+.next
+dist
+.env
+.env.local
+*.log
+apps/api/src/generated
+seed/autos/**/360/*
+seed/autos/**/fotos/*
+!seed/autos/**/.gitkeep
+apps/api/uploads
