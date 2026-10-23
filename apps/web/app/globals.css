@@ -15,21 +15,3 @@ body {
   background: var(--surface);
   color: var(--text);
 }
-
-/* Las fotos de los paneles de la home se acercan suavemente al entrar en pantalla (solo navegadores que lo soportan). */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .showcase-media {
-      animation: showcase-zoom linear both;
-      animation-timeline: view();
-    }
-    @keyframes showcase-zoom {
-      from {
-        transform: scale(1.12);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
-  }
-}
