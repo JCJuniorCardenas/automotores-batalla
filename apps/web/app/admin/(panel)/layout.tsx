@@ -51,6 +51,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
             {link("/admin", "Autos")}
             {link("/admin/consultas", "Consultas", newCount)}
             {link("/admin/configuracion", "Configuración")}
+            {link("/admin/cuenta", "Cuenta")}
             <a href="/" target="_blank" className="whitespace-nowrap hover:underline">Ver sitio ↗</a>
           </nav>
           <button type="button" onClick={logout} className="rounded-sm border border-white/30 px-3 py-1.5 text-sm hover:bg-white/10">

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, Post, Req, Res, UseGuards } from "@nestjs/common";
 import { Throttle } from "@nestjs/throttler";
-import { loginSchema, type LoginInput } from "@batalla/shared";
+import { changePasswordSchema, loginSchema, type ChangePasswordInput, type LoginInput } from "@batalla/shared";
 import type { Request, Response } from "express";
 import { ZodPipe } from "../common/zod.pipe.js";
 import { PrismaService } from "../prisma/prisma.service.js";
@@ -41,6 +41,21 @@ export class AuthController {
     const user = await this.auth.refresh(req.cookies?.[REFRESH_COOKIE] as string | undefined);
     this.setCookies(res, await this.auth.issueTokens(user));
     return { id: user.id, email: user.email, role: user.role };
+  }
+
+  @Post("change-password")
+  @HttpCode(200)
+  @UseGuards(JwtAuthGuard)
+  @Throttle({ default: { ttl: 60_000, limit: 5 } })
+  async changePassword(
+    @Req() req: Request & { user: AuthUser },
+    @Body(new ZodPipe(changePasswordSchema)) body: ChangePasswordInput,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const user = await this.auth.changePassword(req.user.id, body.currentPassword, body.newPassword);
+    // Se reemite la sesión para que el cambio no te saque del panel.
+    this.setCookies(res, await this.auth.issueTokens(user));
+    return { ok: true };
   }
 
   @Post("logout")

@@ -89,7 +89,7 @@ El arranque de la API (`apps/api/start.sh`) hace, en orden: `prisma migrate depl
 - Las cookies de sesión llevan `Secure`: el panel solo funciona sobre HTTPS (Railway lo provee en su dominio y en los propios).
 
 ## 7. Checklist después del deploy
-- [ ] Cambiar la contraseña del admin (`ADMIN_PASSWORD` solo se usa al crear el usuario; para cambiarla ahora hay que hacerlo en la base o recrear el usuario: **pendiente de implementar** pantalla de cambio de contraseña).
+- [ ] Cambiar la contraseña del admin desde el panel (**Cuenta**). `ADMIN_PASSWORD` solo se usa al crear el usuario con el seed; después, la contraseña vive en la base y se cambia desde la pantalla Cuenta.
 - [ ] Cargar en Configuración: dirección, ciudad, email, teléfono, link de Maps, horarios (sábados a confirmar) y las condiciones reales del simulador (la TNA y plazos actuales son de ejemplo).
 - [ ] Probar una consulta desde la ficha y verla en el panel.
 - [ ] Rich Results Test sobre una ficha y sobre la home (datos estructurados).

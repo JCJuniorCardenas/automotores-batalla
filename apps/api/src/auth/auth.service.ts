@@ -44,6 +44,17 @@ export class AuthService {
     return { access, refresh, accessTtlMs: ACCESS_TTL_S * 1000, refreshTtlMs: REFRESH_TTL_S * 1000 };
   }
 
+  /** Cambia la contraseña verificando la actual. Devuelve el usuario para reemitir la sesión. */
+  async changePassword(userId: string, currentPassword: string, newPassword: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    const ok = user ? await argon2.verify(user.passwordHash, currentPassword).catch(() => false) : false;
+    if (!user || !user.active || !ok) {
+      throw new UnauthorizedException({ code: "BAD_CREDENTIALS", message: "La contraseña actual no es correcta" });
+    }
+    await this.prisma.user.update({ where: { id: user.id }, data: { passwordHash: await argon2.hash(newPassword) } });
+    return user;
+  }
+
   async refresh(refreshToken: string | undefined) {
     if (!refreshToken) throw new UnauthorizedException({ code: "NO_TOKEN", message: "No autenticado" });
     let payload: JwtPayload;
