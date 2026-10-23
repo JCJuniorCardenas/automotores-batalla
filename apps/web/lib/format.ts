@@ -27,5 +27,8 @@ export const STATUS_LABEL: Record<CarStatusT, string> = {
   SOLD: "Vendido",
 };
 
-export const carTitle = (c: { brand: string; model: string; version?: string | null }) =>
-  [c.brand, c.model, c.version].filter(Boolean).join(" ");
+/** "Mercedes-Benz GLA" + versión "GLA 200" → "Mercedes-Benz GLA 200" (sin repetir el modelo). */
+export function carTitle(c: { brand: string; model: string; version?: string | null }) {
+  const version = c.version?.toLowerCase().startsWith(c.model.toLowerCase() + " ") ? c.version.slice(c.model.length + 1) : c.version;
+  return [c.brand, c.model, version].filter(Boolean).join(" ");
+}
