@@ -15,3 +15,11 @@ export function InstagramIcon({ className = "h-5 w-5" }: { className?: string })
     </svg>
   );
 }
+
+export function StarIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.600l1.400-6.800L2.200 9.100l6.900-.8L12 2Z" />
+    </svg>
+  );
+}

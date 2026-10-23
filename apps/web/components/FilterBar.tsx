@@ -57,7 +57,7 @@ export function FilterBar({ filters }: { filters: CarFilters | null }) {
         className="flex w-full items-center justify-between font-semibold lg:cursor-default"
       >
         <span>
-          Filtros{activeCount > 0 && <span className="ml-2 rounded-full bg-accent px-2 py-0.5 text-xs text-white">{activeCount}</span>}
+          Filtros{activeCount > 0 && <span className="ml-2 rounded-sm bg-accent px-2 py-0.5 text-xs text-white">{activeCount}</span>}
         </span>
         <span aria-hidden="true" className={"text-black/50 lg:hidden " + (showMobile ? "rotate-180" : "")}>▾</span>
       </button>
@@ -144,11 +144,11 @@ export function FilterBar({ filters }: { filters: CarFilters | null }) {
           </select>
         </label>
         <div className="flex gap-2 sm:col-span-2 lg:col-span-1">
-          <button type="submit" className="flex-1 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
+          <button type="submit" className="flex-1 rounded-sm bg-ink px-4 py-2.5 text-sm font-semibold text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
             Aplicar
           </button>
           {activeCount > 0 && (
-            <button type="button" onClick={() => { setBrand(""); push(new URLSearchParams()); }} className="rounded-full border border-black/20 px-4 py-2.5 text-sm font-semibold hover:bg-black/5">
+            <button type="button" onClick={() => { setBrand(""); push(new URLSearchParams()); }} className="rounded-sm border border-black/20 px-4 py-2.5 text-sm font-semibold hover:bg-black/5">
               Limpiar
             </button>
           )}

@@ -70,7 +70,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Prom
                 {invalid ? "Alguno de los filtros no es válido" : "No encontramos autos con esos filtros"}
               </p>
               <p className="mt-1 text-black/60">Probá quitando algún filtro o consultanos por WhatsApp.</p>
-              <Link href="/autos" className="mt-4 inline-block rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white">
+              <Link href="/autos" className="mt-4 inline-block rounded-sm bg-ink px-5 py-2.5 text-sm font-semibold text-white">
                 Limpiar filtros
               </Link>
             </div>

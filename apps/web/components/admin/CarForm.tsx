@@ -140,10 +140,10 @@ export function CarForm({ car }: { car?: CarDTO }) {
 
       {error && <p role="alert" className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
       <div className="flex gap-3">
-        <button disabled={busy} className="rounded-full bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
+        <button disabled={busy} className="rounded-sm bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
           {busy ? "Guardando…" : car ? "Guardar cambios" : "Crear auto"}
         </button>
-        <button type="button" onClick={() => router.push("/admin")} className="rounded-full border border-black/20 px-6 py-2.5 font-semibold">
+        <button type="button" onClick={() => router.push("/admin")} className="rounded-sm border border-black/20 px-6 py-2.5 font-semibold">
           Volver
         </button>
       </div>

@@ -67,7 +67,7 @@ function ContactForm({ initial }: { initial: PublicSettings["contact"] }) {
         {field("mapsUrl", "Link de Google Maps")}
       </div>
       <Feedback result={result} />
-      <button disabled={busy} className="rounded-full bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
+      <button disabled={busy} className="rounded-sm bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
         {busy ? "Guardando…" : "Guardar contacto"}
       </button>
     </form>
@@ -90,7 +90,7 @@ function HoursForm({ initial }: { initial: PublicSettings["hours"] }) {
         <span className="mt-1 block text-xs font-normal text-black/50">Ej: «Lunes a viernes: 8:30 a 12:30 y 16:30 a 20:30» y «Sábados: …» (confirmar con el cliente).</span>
       </label>
       <Feedback result={result} />
-      <button disabled={busy} className="rounded-full bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
+      <button disabled={busy} className="rounded-sm bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
         {busy ? "Guardando…" : "Guardar horarios"}
       </button>
     </form>
@@ -143,7 +143,7 @@ function FinanceForm({ initial }: { initial: PublicSettings["finance"] }) {
         </label>
       </div>
       <Feedback result={result} />
-      <button disabled={busy} className="rounded-full bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
+      <button disabled={busy} className="rounded-sm bg-ink px-6 py-2.5 font-semibold text-white disabled:opacity-60">
         {busy ? "Guardando…" : "Guardar simulador"}
       </button>
     </form>

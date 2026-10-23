@@ -58,7 +58,7 @@ export function Gallery({ photos, title }: { photos: PhotoDTO[]; title: string }
               aria-label="Foto anterior"
               onClick={() => goTo(index - 1)}
               disabled={index === 0}
-              className="absolute left-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 rounded-full bg-white/90 shadow disabled:opacity-40 sm:block"
+              className="absolute left-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 rounded-sm bg-white/90 shadow disabled:opacity-40 sm:block"
             >
               ‹
             </button>
@@ -67,11 +67,11 @@ export function Gallery({ photos, title }: { photos: PhotoDTO[]; title: string }
               aria-label="Foto siguiente"
               onClick={() => goTo(index + 1)}
               disabled={index === photos.length - 1}
-              className="absolute right-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 rounded-full bg-white/90 shadow disabled:opacity-40 sm:block"
+              className="absolute right-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 rounded-sm bg-white/90 shadow disabled:opacity-40 sm:block"
             >
               ›
             </button>
-            <p className="absolute bottom-2 right-2 rounded-full bg-black/60 px-2.5 py-1 text-xs text-white" aria-live="polite">
+            <p className="absolute bottom-2 right-2 rounded-sm bg-black/60 px-2.5 py-1 text-xs text-white" aria-live="polite">
               {index + 1} / {photos.length}
             </p>
           </>

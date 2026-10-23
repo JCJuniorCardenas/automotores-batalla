@@ -18,7 +18,7 @@ export function CarMedia({ photos, frames, title }: { photos: PhotoDTO[]; frames
       role="tab"
       aria-selected={tab === id}
       onClick={() => setTab(id)}
-      className={`rounded-full px-4 py-2 text-sm font-semibold ${tab === id ? "bg-ink text-white" : "bg-white shadow-[var(--shadow-card)]"}`}
+      className={`rounded-sm px-4 py-2 text-sm font-semibold ${tab === id ? "bg-ink text-white" : "bg-white shadow-[var(--shadow-card)]"}`}
     >
       {label}
     </button>

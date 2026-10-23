@@ -133,13 +133,13 @@ export default async function CarPage({ params }: Props) {
             <h1 className="text-2xl font-bold leading-snug">{title}</h1>
             <p className="text-black/60">{car.year}</p>
             {car.status !== "AVAILABLE" && (
-              <p className="mt-2 inline-block rounded-full bg-gold px-3 py-1 text-xs font-bold">{STATUS_LABEL[car.status]}</p>
+              <p className="mt-2 inline-block rounded-sm bg-gold px-3 py-1 text-xs font-bold">{STATUS_LABEL[car.status]}</p>
             )}
             <div className="mt-4">
               {car.onOffer && car.offerPrice && (
                 <p className="text-sm text-black/50 line-through">{formatPrice(car.priceAmount, car.priceCurrency)}</p>
               )}
-              <p className="text-3xl font-extrabold">{formatPrice(currentPrice(car), car.priceCurrency)}</p>
+              <p className="font-display text-5xl font-bold leading-none">{formatPrice(currentPrice(car), car.priceCurrency)}</p>
               {car.onOffer && <p className="text-sm font-semibold text-accent">¡Precio de oferta!</p>}
             </div>
             <WhatsAppButton href={waLinkForCar(settings.contact.whatsapp, car)} className="mt-5 w-full">
@@ -149,7 +149,7 @@ export default async function CarPage({ params }: Props) {
               href={SITE.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 flex items-center justify-center gap-2 rounded-full border border-black/20 px-5 py-3 text-sm font-semibold hover:bg-black/5"
+              className="mt-3 flex items-center justify-center gap-2 rounded-sm border border-black/20 px-5 py-3 text-sm font-semibold hover:bg-black/5"
             >
               <InstagramIcon /> Ver más en {SITE.instagramHandle}
             </a>

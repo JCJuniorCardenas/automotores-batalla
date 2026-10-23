@@ -46,7 +46,7 @@ export default function LoginPage() {
             {error}
           </p>
         )}
-        <button disabled={busy} className="w-full rounded-full bg-ink px-4 py-2.5 font-semibold text-white disabled:opacity-60">
+        <button disabled={busy} className="w-full rounded-sm bg-ink px-4 py-2.5 font-semibold text-white disabled:opacity-60">
           {busy ? "Ingresando…" : "Ingresar"}
         </button>
       </form>

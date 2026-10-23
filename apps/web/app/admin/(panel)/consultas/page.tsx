@@ -84,7 +84,7 @@ export default function InquiriesPage() {
               setFilter(v);
               setPage(1);
             }}
-            className={`rounded-full px-4 py-1.5 text-sm font-semibold ${filter === v ? "bg-ink text-white" : "bg-white shadow-[var(--shadow-card)]"}`}
+            className={`rounded-sm px-4 py-1.5 text-sm font-semibold ${filter === v ? "bg-ink text-white" : "bg-white shadow-[var(--shadow-card)]"}`}
           >
             {l}
             {v === "NEW" && data && data.newCount > 0 ? ` (${data.newCount})` : ""}
@@ -103,7 +103,7 @@ export default function InquiriesPage() {
               <div>
                 <p className="font-semibold">
                   {q.name}
-                  <span className={`ml-2 rounded-full px-2.5 py-0.5 text-xs font-bold ${STATUS_STYLE[q.status]}`}>{STATUS_LABEL[q.status]}</span>
+                  <span className={`ml-2 rounded-sm px-2.5 py-0.5 text-xs font-bold ${STATUS_STYLE[q.status]}`}>{STATUS_LABEL[q.status]}</span>
                 </p>
                 <p className="text-sm text-black/60">{fmt.format(new Date(q.createdAt))}</p>
               </div>
@@ -145,9 +145,9 @@ export default function InquiriesPage() {
 
       {data && data.totalPages > 1 && (
         <div className="mt-4 flex items-center justify-center gap-3 text-sm">
-          <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)} className="rounded-full border border-black/20 px-4 py-2 disabled:opacity-40">← Anterior</button>
+          <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)} className="rounded-sm border border-black/20 px-4 py-2 disabled:opacity-40">← Anterior</button>
           <span>Página {data.page} de {data.totalPages}</span>
-          <button disabled={page >= data.totalPages} onClick={() => setPage((p) => p + 1)} className="rounded-full border border-black/20 px-4 py-2 disabled:opacity-40">Siguiente →</button>
+          <button disabled={page >= data.totalPages} onClick={() => setPage((p) => p + 1)} className="rounded-sm border border-black/20 px-4 py-2 disabled:opacity-40">Siguiente →</button>
         </div>
       )}
     </>

@@ -182,7 +182,7 @@ export function Spin360Viewer({ frames, title }: { frames: SpinFrameDTO[]; title
           onClick={() => setActive(true)}
           className="absolute inset-0 flex items-center justify-center bg-black/25 text-white"
         >
-          <span className="rounded-full bg-white px-5 py-3 font-semibold text-ink shadow">↻ Ver en 360°</span>
+          <span className="rounded-sm bg-white px-5 py-3 font-semibold text-ink shadow">↻ Ver en 360°</span>
         </button>
       )}
       {active && !interactive && !failed && (
@@ -197,11 +197,11 @@ export function Spin360Viewer({ frames, title }: { frames: SpinFrameDTO[]; title
       )}
       {interactive && (
         <>
-          <p className="pointer-events-none absolute left-2 top-2 rounded-full bg-black/60 px-3 py-1 text-xs text-white">
+          <p className="pointer-events-none absolute left-2 top-2 rounded-sm bg-black/60 px-3 py-1 text-xs text-white">
             Arrastrá para girar
           </p>
           {loaded < total && (
-            <p className="pointer-events-none absolute bottom-2 left-2 rounded-full bg-black/60 px-3 py-1 text-xs text-white" aria-hidden="true">
+            <p className="pointer-events-none absolute bottom-2 left-2 rounded-sm bg-black/60 px-3 py-1 text-xs text-white" aria-hidden="true">
               Mejorando… {pct}%
             </p>
           )}
@@ -209,7 +209,7 @@ export function Spin360Viewer({ frames, title }: { frames: SpinFrameDTO[]; title
             type="button"
             onClick={() => setAutoplay((a) => !a)}
             aria-pressed={autoplay}
-            className="absolute bottom-2 right-2 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold shadow"
+            className="absolute bottom-2 right-2 rounded-sm bg-white/90 px-3 py-1.5 text-xs font-semibold shadow"
           >
             {autoplay ? "⏸ Pausar giro" : "▶ Girar solo"}
           </button>

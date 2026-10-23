@@ -69,7 +69,7 @@ export function InstallmentSimulator({ finance, price: fixedPrice, currency: fix
             <legend className="text-sm font-semibold">Plazo</legend>
             <div className="mt-2 flex flex-wrap gap-2">
               {finance.terms.map((t) => (
-                <label key={t} className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold ${months === t ? "bg-ink text-white" : "border border-black/20"}`}>
+                <label key={t} className={`cursor-pointer rounded-sm px-4 py-2 text-sm font-semibold ${months === t ? "bg-ink text-white" : "border border-black/20"}`}>
                   <input type="radio" name="term" value={t} checked={months === t} onChange={() => setMonths(t)} className="sr-only" />
                   {t} cuotas
                 </label>

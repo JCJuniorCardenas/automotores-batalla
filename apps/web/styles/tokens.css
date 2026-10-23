@@ -1,8 +1,8 @@
 /* Tokens de marca. VALORES PROVISORIOS: reemplazar con los extraídos del logo real. */
 :root {
-  --color-brand-black: #111111;
-  --color-brand-red: #d32f2f;
-  --color-brand-cream: #f6f0e4;
+  --color-brand-black: #121110;
+  --color-brand-red: #cf2a2a;
+  --color-brand-cream: #f4eee1;
   --color-brand-gold: #c9a227;
   --color-brand-sky: #75aadb;
 
@@ -10,8 +10,10 @@
   --text: var(--color-brand-black);
   --accent: var(--color-brand-red);
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --shadow-card: 0 2px 8px rgb(0 0 0 / 0.08);
+  /* Esquinas casi rectas: más cartel que app. */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  /* Filete fino en lugar de sombra blanda. */
+  --shadow-card: 0 0 0 1px rgb(18 17 16 / 0.14);
 }

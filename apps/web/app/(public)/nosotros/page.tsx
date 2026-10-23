@@ -102,11 +102,11 @@ export default async function AboutPage() {
             href={SITE.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-black/20 px-5 py-3 font-semibold hover:bg-black/5"
+            className="inline-flex items-center gap-2 rounded-sm border border-black/20 px-5 py-3 font-semibold hover:bg-black/5"
           >
             <InstagramIcon /> {SITE.instagramHandle}
           </a>
-          <Link href="/autos" className="rounded-full bg-ink px-5 py-3 font-semibold text-white">Ver catálogo</Link>
+          <Link href="/autos" className="rounded-sm bg-ink px-5 py-3 font-semibold text-white">Ver catálogo</Link>
         </div>
       </section>
     </main>

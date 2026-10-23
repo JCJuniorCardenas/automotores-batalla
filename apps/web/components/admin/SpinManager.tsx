@@ -69,7 +69,7 @@ export function SpinManager({ carId, initial }: { carId: string; initial: Spin |
         disabled={busy}
         onChange={(e) => upload(e.target.files)}
         aria-label="Subir imágenes del 360°"
-        className="mt-3 block w-full text-sm file:mr-3 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:font-semibold file:text-white"
+        className="mt-3 block w-full text-sm file:mr-3 file:rounded-sm file:border-0 file:bg-ink file:px-4 file:py-2 file:font-semibold file:text-white"
       />
       {busy && <p role="status" className="mt-2 text-sm text-black/60">Procesando imágenes… puede tardar unos segundos.</p>}
       {error && <p role="alert" className="mt-2 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
@@ -89,10 +89,10 @@ export function SpinManager({ carId, initial }: { carId: string; initial: Spin |
             ))}
           </ul>
           <div className="mt-2 flex flex-wrap gap-2 text-sm">
-            <button type="button" disabled={busy} onClick={() => void reverse()} className="rounded-full border border-black/20 px-4 py-1.5">
+            <button type="button" disabled={busy} onClick={() => void reverse()} className="rounded-sm border border-black/20 px-4 py-1.5">
               ⇄ Invertir sentido del giro
             </button>
-            <button type="button" disabled={busy} onClick={() => void remove()} className="rounded-full border border-red-300 px-4 py-1.5 text-red-700">
+            <button type="button" disabled={busy} onClick={() => void remove()} className="rounded-sm border border-red-300 px-4 py-1.5 text-red-700">
               Eliminar 360°
             </button>
           </div>

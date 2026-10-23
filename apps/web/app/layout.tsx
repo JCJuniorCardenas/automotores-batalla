@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const body = Barlow({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const display = Barlow_Condensed({ variable: "--font-display", subsets: ["latin"], weight: ["600", "700", "800"] });
 
 const DESCRIPTION = "Autos 0km y usados, permutas y consignaciones. Mirá el catálogo, simulá tu cuota y consultanos por WhatsApp.";
 
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es-AR" className={`${geistSans.variable} h-full antialiased`}>
+    <html lang="es-AR" className={`${body.variable} ${display.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );

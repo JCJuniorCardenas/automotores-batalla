@@ -36,7 +36,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
       <Link href={href} aria-current={active ? "page" : undefined} className={`inline-flex items-center gap-1.5 hover:underline ${active ? "underline underline-offset-4" : ""}`}>
         {label}
         {badge ? (
-          <span aria-label={`${badge} nuevas`} className="rounded-full bg-accent px-1.5 text-xs font-bold leading-5">{badge}</span>
+          <span aria-label={`${badge} nuevas`} className="rounded-sm bg-accent px-1.5 text-xs font-bold leading-5">{badge}</span>
         ) : null}
       </Link>
     );
@@ -53,7 +53,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
             {link("/admin/configuracion", "Configuración")}
             <a href="/" target="_blank" className="whitespace-nowrap hover:underline">Ver sitio ↗</a>
           </nav>
-          <button type="button" onClick={logout} className="rounded-full border border-white/30 px-3 py-1.5 text-sm hover:bg-white/10">
+          <button type="button" onClick={logout} className="rounded-sm border border-white/30 px-3 py-1.5 text-sm hover:bg-white/10">
             Salir
           </button>
         </div>

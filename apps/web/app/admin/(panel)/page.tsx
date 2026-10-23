@@ -55,7 +55,7 @@ export default function AdminCarsPage() {
     <>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">Autos</h1>
-        <Link href="/admin/autos/nuevo" className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white">
+        <Link href="/admin/autos/nuevo" className="rounded-sm bg-accent px-5 py-2.5 text-sm font-semibold text-white">
           + Nuevo auto
         </Link>
       </div>
@@ -115,7 +115,7 @@ export default function AdminCarsPage() {
                       onClick={() => void toggleFeatured(c)}
                       aria-pressed={c.featured}
                       aria-label={`Destacar ${carTitle(c)}`}
-                      className={`rounded-full px-3 py-1 text-xs font-semibold ${c.featured ? "bg-gold text-ink" : "bg-black/5 text-black/60"}`}
+                      className={`rounded-sm px-3 py-1 text-xs font-semibold ${c.featured ? "bg-gold text-ink" : "bg-black/5 text-black/60"}`}
                     >
                       {c.featured ? "★ Destacado" : "☆ No"}
                     </button>
@@ -134,9 +134,9 @@ export default function AdminCarsPage() {
       )}
       {data && data.totalPages > 1 && (
         <div className="mt-4 flex items-center justify-center gap-3 text-sm">
-          <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)} className="rounded-full border border-black/20 px-4 py-2 disabled:opacity-40">← Anterior</button>
+          <button disabled={page <= 1} onClick={() => setPage((p) => p - 1)} className="rounded-sm border border-black/20 px-4 py-2 disabled:opacity-40">← Anterior</button>
           <span>Página {data.page} de {data.totalPages}</span>
-          <button disabled={page >= data.totalPages} onClick={() => setPage((p) => p + 1)} className="rounded-full border border-black/20 px-4 py-2 disabled:opacity-40">Siguiente →</button>
+          <button disabled={page >= data.totalPages} onClick={() => setPage((p) => p + 1)} className="rounded-sm border border-black/20 px-4 py-2 disabled:opacity-40">Siguiente →</button>
         </div>
       )}
     </>

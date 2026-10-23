@@ -19,7 +19,7 @@ export function Pagination({ page, totalPages, basePath, params }: Props) {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1).filter(
     (p) => p === 1 || p === totalPages || Math.abs(p - page) <= 1,
   );
-  const btn = "inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-sm font-semibold";
+  const btn = "inline-flex h-10 min-w-10 items-center justify-center rounded-sm px-3 text-sm font-semibold";
   return (
     <nav aria-label="Paginación" className="mt-8 flex flex-wrap items-center justify-center gap-2">
       {page > 1 && <Link href={href(page - 1)} className={`${btn} border border-black/20 hover:bg-black/5`}>← Anterior</Link>}
