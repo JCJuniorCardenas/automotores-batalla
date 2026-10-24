@@ -16,6 +16,32 @@ Internet ──► web (Next.js, dominio público) ──/api/* y /media/* (prox
 - Solo `web` necesita dominio público. La API no se expone: el navegador siempre habla con `web`, que reenvía `/api/*` y `/media/*` por la red privada. Así las cookies de sesión son del mismo origen y no hace falta CORS.
 - Ambos servicios se construyen desde la **raíz del repo** (monorepo) con su Dockerfile.
 
+## 1.1 Camino rápido para la demo: UN solo servicio (recomendado ahora)
+
+Reutiliza la imagen única probada para Render (`deploy/render/Dockerfile`): web y API en un contenedor, fotos de ejemplo ya incluidas en la imagen. Son 3 piezas en Railway: **PostgreSQL + 1 servicio**.
+
+1. **New Project → Deploy from GitHub repo** → `JCJuniorCardenas/automotores-batalla` (rama `main`). Esto crea el servicio.
+2. En el servicio → **Variables**, agregar:
+
+   | Variable | Valor |
+   |---|---|
+   | `RAILWAY_DOCKERFILE_PATH` | `deploy/render/Dockerfile` (variable oficial de Railway para elegir el Dockerfile) |
+   | `DATABASE_URL` | Referencia al Postgres: `${{Postgres.DATABASE_URL}}` (usá el nombre real del servicio de base) ⚠️ **VERIFICAR** sintaxis en el selector de variables |
+   | `JWT_ACCESS_SECRET` / `JWT_REFRESH_SECRET` | Dos secretos distintos y largos (`openssl rand -base64 48`). **Los escribís vos.** |
+   | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Tu email y una contraseña nueva y fuerte (10+ caracteres, letras y números) |
+   | `RUN_SEED` | `1` (crea el admin y los 13 autos; idempotente) |
+   | `NEXT_PUBLIC_SITE_URL` | La URL pública (paso 4). Va **vacía/provisoria** la primera vez. |
+
+   `PORT` lo inyecta Railway; el arranque lo usa para la web (la API corre interna en 3001). No lo definas.
+3. **PostgreSQL**: **+ New → Database → Add PostgreSQL** en el mismo proyecto.
+4. Servicio → **Settings → Networking → Generate Domain**. Copiá la URL `https://….up.railway.app`, pegala en `NEXT_PUBLIC_SITE_URL` y **redeployá** (se fija al compilar: Railway solo pasa al build las variables que el Dockerfile declara con `ARG`, y ese Dockerfile ya declara `NEXT_PUBLIC_SITE_URL`).
+5. Cuando diga **Active**, abrir la URL, probar `/`, `/autos`, una ficha y `/admin/login`.
+
+Notas de este camino:
+- Sin Volume, las fotos que se suban desde el panel se pierden al redeployar (las de ejemplo viajan dentro de la imagen). **No montes un Volume sobre `/app/uploads`**: taparía las fotos de ejemplo. Para persistir imágenes reales, usar R2 (§4).
+- Aplicar `TRUST_PROXY=2` ya viene fijado en la imagen.
+- Cuando el cliente apruebe, se puede pasar a dos servicios separados (el resto de esta guía) y a R2.
+
 ## 2. Antes de empezar
 - Repo en GitHub: https://github.com/JCJuniorCardenas/automotores-batalla
 - Decidir el **dominio** (o usar el `*.up.railway.app` que da Railway para la demo).
