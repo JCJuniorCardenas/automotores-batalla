@@ -31,7 +31,7 @@ export async function SiteFooter() {
           {place && <p className="mt-2">{place}</p>}
           <p className={`${label} mt-6`}>Navegá</p>
           <p className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-            <Link href="/autos" className="underline-offset-4 hover:underline">Autos</Link>
+            <Link href="/autos" className="underline-offset-4 hover:underline">Catálogo</Link>
             <Link href="/nosotros" className="underline-offset-4 hover:underline">Nosotros</Link>
             <Link href="/contacto" className="underline-offset-4 hover:underline">Contacto</Link>
           </p>

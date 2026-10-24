@@ -5,7 +5,7 @@ import { waGeneric } from "@/lib/whatsapp";
 import { InstagramIcon, WhatsAppIcon } from "./icons";
 
 const NAV = [
-  { href: "/autos", label: "Autos", always: true },
+  { href: "/autos", label: "Catálogo", always: true },
   { href: "/nosotros", label: "Nosotros", always: false },
   { href: "/contacto", label: "Contacto", always: true },
 ];
@@ -23,12 +23,12 @@ export async function SiteHeader() {
             <span className="text-accent">Batalla</span>
           </span>
         </Link>
-        <nav aria-label="Principal" className="flex items-center gap-1 sm:gap-2">
+        <nav aria-label="Principal" className="flex items-center sm:gap-2">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className={`${n.always ? "" : "hidden md:block"} px-2 py-2 font-display text-lg font-semibold uppercase tracking-wide hover:text-gold`}
+              className={`${n.always ? "" : "hidden md:block"} px-1.5 py-2 font-display text-base font-semibold uppercase tracking-wide hover:text-gold sm:px-2 sm:text-lg`}
             >
               {n.label}
             </Link>
@@ -38,7 +38,7 @@ export async function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Instagram ${SITE.instagramHandle}`}
-            className="p-2 hover:text-gold"
+            className="p-1.5 hover:text-gold sm:p-2"
           >
             <InstagramIcon />
           </a>
@@ -47,7 +47,7 @@ export async function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Escribinos por WhatsApp"
-            className="inline-flex items-center gap-1.5 rounded-sm bg-[#178a45] px-3 py-2 text-white hover:bg-[#126f37]"
+            className="inline-flex items-center gap-1.5 rounded-sm bg-[#178a45] px-2.5 py-2 text-white hover:bg-[#126f37]"
           >
             <WhatsAppIcon className="h-4 w-4" />
             <span className="hidden font-display text-base font-bold uppercase tracking-wide sm:inline">WhatsApp</span>

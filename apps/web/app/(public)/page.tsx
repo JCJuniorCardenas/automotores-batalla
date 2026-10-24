@@ -83,7 +83,7 @@ export default async function Home() {
             Mirá el stock, simulá tu cuota y escribinos directo por WhatsApp. Sin vueltas.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/autos" className="btn btn-red">Ver los autos</Link>
+            <Link href="/autos" className="btn btn-red">Ver el catálogo</Link>
             <WhatsAppButton href={waGeneric(settings.contact.whatsapp)}>Escribinos</WhatsAppButton>
           </div>
         </div>

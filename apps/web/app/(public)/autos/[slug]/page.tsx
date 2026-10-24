@@ -90,9 +90,9 @@ export default async function CarPage({ params }: Props) {
   return (
     <main className="mx-auto max-w-6xl px-4 py-6">
       <JsonLd data={jsonLd} />
-      <JsonLd data={breadcrumbJsonLd([{ name: "Inicio", path: "/" }, { name: "Autos", path: "/autos" }, { name: title, path: `/autos/${car.slug}` }])} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Inicio", path: "/" }, { name: "Catálogo", path: "/autos" }, { name: title, path: `/autos/${car.slug}` }])} />
       <nav aria-label="Migas de pan" className="mb-4 text-sm text-black/60">
-        <Link href="/" className="hover:underline">Inicio</Link> / <Link href="/autos" className="hover:underline">Autos</Link> / <span aria-current="page">{title}</span>
+        <Link href="/" className="hover:underline">Inicio</Link> / <Link href="/autos" className="hover:underline">Catálogo</Link> / <span aria-current="page">{title}</span>
       </nav>
       <div className="grid gap-8 lg:grid-cols-[1fr_22rem]">
         <div className="max-lg:order-1 lg:col-start-1">
