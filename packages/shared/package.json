@@ -13,6 +13,10 @@
     "./finance": {
       "types": "./dist/finance.d.ts",
       "default": "./dist/finance.js"
+    },
+    "./whatsapp": {
+      "types": "./dist/whatsapp.d.ts",
+      "default": "./dist/whatsapp.js"
     }
   },
   "scripts": {

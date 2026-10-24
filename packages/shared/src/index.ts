@@ -5,3 +5,4 @@ export * from "./inquiry.js";
 export * from "./settings.js";
 export * from "./finance.js";
 export * from "./spin.js";
+export * from "./whatsapp.js";

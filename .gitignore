@@ -9,3 +9,4 @@ seed/autos/**/360/*
 seed/autos/**/fotos/*
 !seed/autos/**/.gitkeep
 apps/api/uploads
+*.tsbuildinfo

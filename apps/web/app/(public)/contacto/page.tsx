@@ -63,7 +63,7 @@ export default async function ContactPage() {
         </section>
         <section aria-labelledby="form">
           <h2 id="form" className="mb-3 text-xl font-bold">Dejanos tu consulta</h2>
-          <InquiryForm />
+          <InquiryForm whatsapp={contact.whatsapp} />
         </section>
       </div>
     </main>

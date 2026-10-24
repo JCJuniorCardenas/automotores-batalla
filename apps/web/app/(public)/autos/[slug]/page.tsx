@@ -49,6 +49,7 @@ export default async function CarPage({ params }: Props) {
   if (!car) notFound();
 
   const title = carTitle(car);
+  const waCar = { title, year: car.year, url: `${SITE.url}/autos/${car.slug}` };
   const specs: [string, string | null][] = [
     ["Año", String(car.year)],
     ["Condición", CONDITION_LABEL[car.condition]],
@@ -119,12 +120,18 @@ export default async function CarPage({ params }: Props) {
           </section>
           {settings.finance.enabled && car.status !== "SOLD" && (
             <div className="mt-8">
-              <InstallmentSimulator finance={settings.finance} price={currentPrice(car)} currency={car.priceCurrency} />
+              <InstallmentSimulator
+                finance={settings.finance}
+                price={currentPrice(car)}
+                currency={car.priceCurrency}
+                whatsapp={settings.contact.whatsapp}
+                car={waCar}
+              />
             </div>
           )}
           <section className="mt-8" aria-labelledby="consulta">
             <h2 id="consulta" className="mb-3 text-xl font-bold">Enviar una consulta</h2>
-            <InquiryForm carId={car.id} carLabel={`${title} ${car.year}`} />
+            <InquiryForm whatsapp={settings.contact.whatsapp} car={{ ...waCar, id: car.id }} />
           </section>
         </div>
 

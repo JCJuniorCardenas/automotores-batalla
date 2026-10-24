@@ -6,7 +6,6 @@ import { InstagramIcon, WhatsAppIcon } from "./icons";
 
 const NAV = [
   { href: "/autos", label: "Autos", always: true },
-  { href: "/financiacion", label: "Financiación", always: false },
   { href: "/nosotros", label: "Nosotros", always: false },
   { href: "/contacto", label: "Contacto", always: true },
 ];
